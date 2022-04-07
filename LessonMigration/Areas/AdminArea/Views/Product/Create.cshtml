@@ -1,0 +1,41 @@
+﻿@model ProductCreateVM
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container mt-5">
+    <form class="forms-sample" method="post" asp-action="Create" enctype="multipart/form-data">
+        <div class="form-group">
+            <label asp-for="Name">Name: </label>
+            <input class="form-control" style="width:300px" asp-for="Name" type="text">
+            <span class="text-danger" asp-validation-for="Name"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Count">Product count:</label>
+            <input class="form-control" style="width:300px" asp-for="Count" min="0" type="number">
+            <span class="text-danger" asp-validation-for="Count"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Price">Price: </label>
+            <input class="form-control" style="width:300px" asp-for="Price" min="0" step=".01" type="number">
+            <span class="text-danger" asp-validation-for="Price"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CategoryId">Categories: </label>
+            <select class="form-control" style="width:300px" asp-for="CategoryId" asp-items="@ViewBag.categories"></select>
+            <span class="text-danger" asp-validation-for="Price"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Photos">Images:</label>
+            <input class="form-control" style="width:300px" asp-for="Photos">
+            <span class="text-danger" asp-validation-for="Photos"></span>
+        </div>
+        <button type="submit" class="btn btn-primary me-2">Submit</button>
+        <a asp-action="Index" class="btn btn-light">Cancel</a>
+    </form>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationPartial" />
+}
+
